@@ -12,7 +12,6 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import javax.inject.Inject
-import kotlin.time.Duration.Companion.milliseconds
 
 @HiltViewModel
 class CompanyListingsViewModel @Inject constructor(
@@ -30,7 +29,7 @@ class CompanyListingsViewModel @Inject constructor(
                 state = state.copy(searchQuery = event.query)
                 searchJob?.cancel()
                 searchJob = viewModelScope.launch {
-                    delay(DELAY_TIME_FOR_SEARCH_JOB.milliseconds)
+                    delay(DELAY_TIME_FOR_SEARCH_JOB)
                     getCompanyListings()
                 }
             }
@@ -61,6 +60,6 @@ class CompanyListingsViewModel @Inject constructor(
     }
 
     companion object {
-        val DELAY_TIME_FOR_SEARCH_JOB = 500
+        const val DELAY_TIME_FOR_SEARCH_JOB = 500L
     }
 }
