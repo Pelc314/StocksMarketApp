@@ -19,3 +19,9 @@ Dapp/src/main/java/com/plcoding/stockmarketapp/data/local/StockDao.kt,0\a\0af9f
 Lapp/src/main/java/com/plcoding/stockmarketapp/domain/model/CompanyListing.kt,5\f\5f753feafeeae6d5b5c6770d49550c4e5499a84b
 
 Oapp/src/main/java/com/plcoding/stockmarketapp/data/remote/dto/CompanyInfoDto.kt,5\2\52e29e08714f5a3915b6fae5405c1715722f4801
+w
+G.idea/sonarlint/issuestore/3/a/3a29632c99713c1a6626068fca064dac50d04e53,d\8\d8280be783567d473f518cf244929244dfe8776d
+
+Oapp/src/main/java/com/plcoding/stockmarketapp/data/csv/CompanyListingsParser.kt,7\f\7f644644f3fedd3db45f12dd0b5d8bc732c3e569
+z
+Japp/src/main/java/com/plcoding/stockmarketapp/domain/model/IntradayInfo.kt,8\e\8e0fa00c12f5a50dd92e6b114453ad493d88917f

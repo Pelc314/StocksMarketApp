@@ -13,14 +13,14 @@ interface StockApi {
 
     @GET("query?function=OVERVIEW")
     suspend fun getCompanyInfo(
-        @Query("apikey") apiKey: String = API_KEY,
-        @Query("symbol") symbol: String
+        @Query("symbol") symbol: String,
+        @Query("apikey") apiKey: String = API_KEY
     ): CompanyInfoDto
 
     @GET("query?function=TIME_SERIES_INTRADAY&interval=60min&datatype=csv")
     suspend fun getIntradayInfo(
-        @Query("apikey") apiKey: String = API_KEY,
-        @Query("symbol") symbol: String
+        @Query("symbol") symbol: String,
+        @Query("apikey") apiKey: String = API_KEY
     ): ResponseBody
 
     companion object {
