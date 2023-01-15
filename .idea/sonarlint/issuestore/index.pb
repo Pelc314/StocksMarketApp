@@ -1,6 +1,4 @@
 
-n
->app/src/main/java/com/plcoding/stockmarketapp/util/Resource.kt,1\0\10733e1390be290e1ff31d4cfe1b8954784c5807
 ’
 bapp/src/main/java/com/plcoding/stockmarketapp/presentation/companylistings/CompanyListingsEvent.kt,6\7\67b28d9ec99c942547003e716e2c9e4d692335ff
 ’
@@ -9,8 +7,6 @@ bapp/src/main/java/com/plcoding/stockmarketapp/presentation/companylistings/Comp
 Papp/src/main/java/com/plcoding/stockmarketapp/data/local/CompanyListingEntity.kt,c\7\c779897b8bbd340e75ff1980ceac06a79f51f4af
 y
 Iapp/src/main/java/com/plcoding/stockmarketapp/data/local/StockDatabase.kt,5\2\52670f41115785dc9c69a584396a0b526c9e02d9
-
-Oapp/src/main/java/com/plcoding/stockmarketapp/data/csv/CompanyListingsParser.kt,7\f\7f644644f3fedd3db45f12dd0b5d8bc732c3e569
 P
  app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
 o
