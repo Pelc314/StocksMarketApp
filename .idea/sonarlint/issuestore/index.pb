@@ -25,3 +25,5 @@ G.idea/sonarlint/issuestore/3/a/3a29632c99713c1a6626068fca064dac50d04e53,d\8\d8
 Oapp/src/main/java/com/plcoding/stockmarketapp/data/csv/CompanyListingsParser.kt,7\f\7f644644f3fedd3db45f12dd0b5d8bc732c3e569
 z
 Japp/src/main/java/com/plcoding/stockmarketapp/domain/model/IntradayInfo.kt,8\e\8e0fa00c12f5a50dd92e6b114453ad493d88917f
+7
+gradlew,5\b\5bbfa66edb4db3c7c33c5181f43510990d3307f9
