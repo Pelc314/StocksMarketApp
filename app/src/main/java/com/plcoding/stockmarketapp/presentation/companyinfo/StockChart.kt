@@ -5,13 +5,10 @@ import androidx.compose.foundation.Canvas
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Brush
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.Path
-import androidx.compose.ui.graphics.asAndroidPath
-import androidx.compose.ui.graphics.asComposePath
-import androidx.compose.ui.graphics.nativeCanvas
+import androidx.compose.ui.graphics.*
+import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.plcoding.stockmarketapp.domain.model.IntradayInfo
 import kotlin.math.round
@@ -57,7 +54,7 @@ fun StockChart(
         }
         val yAxisTextSize = 30f
         val priceStep = (upperValue - lowerValue) / 5f
-        (0..5).forEach { i ->
+        (0..4).forEach { i ->
             drawContext.canvas.nativeCanvas.apply {
                 drawText(
                     round(lowerValue + priceStep * i).toString(),
@@ -87,7 +84,7 @@ fun StockChart(
                     )
                 }
                 lastX = (x1 + x2) / 2f
-                quadraticBezierTo(
+                quadraticBezierTo( // this formula makes graph look fluid without hard edges
                     x1,
                     y1,
                     (x1 + x2) / 2f,
@@ -106,9 +103,18 @@ fun StockChart(
             path = fillPath,
             brush = Brush.verticalGradient(
                 colors = listOf(
-                    transparentGraphColor,
-                    Color.Transparent
-                )
+                    transparentGraphColor, // top graph color
+                    Color.Transparent // bottom graph color which it gradients to from the top
+                ),
+                endY = size.height - spacing // this is where the gradient ends
+            )
+        )
+        drawPath(
+            path = strokePath,
+            color = graphColor,
+            style = Stroke(
+                width = 3.dp.toPx(),
+                cap = StrokeCap.Round
             )
         )
     }

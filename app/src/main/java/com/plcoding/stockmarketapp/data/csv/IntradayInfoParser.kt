@@ -8,6 +8,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.io.InputStream
 import java.io.InputStreamReader
+import java.time.DayOfWeek
 import java.time.LocalDateTime
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -21,16 +22,28 @@ class IntradayInfoParser @Inject constructor() : CSVParser<IntradayInfo> {
                 .readAll()
                 .drop(1)
                 .mapNotNull { line ->
-                    val timestamp = line.getOrNull(0) ?: return@mapNotNull null
-                    val close = line.getOrNull(4) ?: return@mapNotNull null
+                    val timestamp = line.getOrNull(firstColumn) ?: return@mapNotNull null
+                    val close = line.getOrNull(fourthColumn) ?: return@mapNotNull null
                     val dto = IntradayInfoDto(timestamp, close.toDouble())
                     dto.toIntradayInfo()
                 }
                 .filter {
-                    it.date.dayOfMonth == LocalDateTime.now().minusDays(1).dayOfMonth
+                    when (LocalDateTime.now().dayOfWeek) {
+                        DayOfWeek.SUNDAY -> it.date.dayOfMonth == LocalDateTime.now()
+                            .minusDays(2).dayOfMonth
+                        DayOfWeek.MONDAY -> it.date.dayOfMonth == LocalDateTime.now()
+                            .minusDays(3).dayOfMonth
+                        else ->
+                            it.date.dayOfMonth == LocalDateTime.now().minusDays(1).dayOfMonth
+                    }
                 }.also {
                     csvReader.close()
                 }
         }
+    }
+
+    companion object {
+        const val firstColumn = 0
+        const val fourthColumn = 4
     }
 }
