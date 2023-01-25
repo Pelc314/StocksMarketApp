@@ -54,7 +54,9 @@ class CompanyListingsViewModel @Inject constructor(
                                 state = state.copy(companies = companyListings)
                             }
                         }
-                        is Resource.Error -> Unit // TODO error handle
+                        is Resource.Error -> {
+                            state = state.copy(error = result.message ?: "unexpected error")
+                        }
                         is Resource.Loading -> {
                             state = state.copy(isLoading = result.isLoading)
                         }
